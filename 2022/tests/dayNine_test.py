@@ -1,6 +1,5 @@
 import unittest
 from ..dayNineOne import adjacency_and_alignment, is_ontop, build_as_single_moves, change_position, make_move
-from ..dayNineTwo import build_new_moves
 
 class TestDay09(unittest.TestCase):
     """
@@ -253,13 +252,3 @@ class TestDay09(unittest.TestCase):
             positions = make_move(move, positions)
 
             self.assertDictEqual(positions, expected_positions)
-
-    def test_build_new_moves(self):
-        motion = [[0,0], [1,0], [2,0], [2,-1], [3,-2], [3,-1], 
-                    [3,-2], [3,-1], [3,0], [3,1], [2,1]]
-
-        new_moves = build_new_moves(motion)
-
-        expected_new_moves = ['R', 'R', 'D', 'RD', 'U', 'D', 'U', 'U', 'U', 'L']
-
-        self.assertEqual(new_moves, expected_new_moves)

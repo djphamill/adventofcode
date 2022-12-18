@@ -1,5 +1,4 @@
 import sys
-from math import floor
 
 def solution(input_text):
 

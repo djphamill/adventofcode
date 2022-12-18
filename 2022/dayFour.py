@@ -1,11 +1,10 @@
-from .common import get_list_from_file
-
 def main():
-    pairs = get_list_from_file('day04-input.txt')
-    
+    with open('data/day04-input.txt', 'r') as f:
+        pairs = f.read().split('\n')
+
     overlaps = get_list_of_overlaps(pairs)
 
-    print('There are ')
+    print(f'There are {sum(overlaps)} overlaps.')
 
 def get_list_of_overlaps(pairs):
     overlaps = []

@@ -6,6 +6,8 @@ class TestDay08(unittest.TestCase):
     Test functions created for Day04 tasks
     """
 
+    INPUT_FILE = '/Users/djph/Library/Mobile Documents/com~apple~CloudDocs/repos/adventofcode/2022/data/dayEight-input-test-01.txt'
+
     TREE_GRID = [[[4], [4], [3], [4], [4]],
                  [[5], [3], [7], [8], [4]],
                  [[9], [8], [7], [1], [4]],
@@ -15,7 +17,7 @@ class TestDay08(unittest.TestCase):
         """
         Test build_tree_rows_and_cols
         """
-        with open('/Users/djph/Library/Mobile Documents/com~apple~CloudDocs/repos/adventofcode/2022/dayEight-input-test-01.txt','r') as f:
+        with open(self.INPUT_FILE,'r') as f:
             input_text = f.read()
 
         rows, cols = build_tree_rows_and_cols(input_text)
@@ -30,7 +32,7 @@ class TestDay08(unittest.TestCase):
         Test is_tree_visible for interior tree
         """
 
-        with open('/Users/djph/Library/Mobile Documents/com~apple~CloudDocs/repos/adventofcode/2022/dayEight-input-test-01.txt','r') as f:
+        with open(self.INPUT_FILE,'r') as f:
             input_text = f.read()
 
         rows, cols = build_tree_rows_and_cols(input_text)
@@ -47,7 +49,7 @@ class TestDay08(unittest.TestCase):
         """
         Test is_tree_visible for edge
         """
-        with open('/Users/djph/Library/Mobile Documents/com~apple~CloudDocs/repos/adventofcode/2022/dayEight-input-test-01.txt','r') as f:
+        with open(self.INPUT_FILE,'r') as f:
             input_text = f.read()
 
         rows, cols = build_tree_rows_and_cols(input_text)
@@ -64,7 +66,7 @@ class TestDay08(unittest.TestCase):
         """
         Test is_tree_visible for edge
         """
-        with open('/Users/djph/Library/Mobile Documents/com~apple~CloudDocs/repos/adventofcode/2022/dayEight-input-test-01.txt','r') as f:
+        with open(self.INPUT_FILE,'r') as f:
             input_text = f.read()
 
         rows, cols = build_tree_rows_and_cols(input_text)
@@ -81,7 +83,7 @@ class TestDay08(unittest.TestCase):
         """
         Test is_tree_visible for edge
         """
-        with open('/Users/djph/Library/Mobile Documents/com~apple~CloudDocs/repos/adventofcode/2022/dayEight-input-test-01.txt','r') as f:
+        with open(self.INPUT_FILE,'r') as f:
             input_text = f.read()
 
         rows, cols = build_tree_rows_and_cols(input_text)

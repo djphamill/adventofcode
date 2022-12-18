@@ -7,12 +7,14 @@ class TestDay07(unittest.TestCase):
     Test functions created for Day04 tasks
     """
 
+    INPUT_FULE = '/Users/djph/Library/Mobile Documents/com~apple~CloudDocs/repos/adventofcode/2022/data/daySeven-input-test-03.txt'
+
     def test_build_files_dict(self):
         """
         Test build_folder_tree
         """
 
-        with open('/Users/djph/Library/Mobile Documents/com~apple~CloudDocs/repos/adventofcode/2022/daySeven-input-test-03.txt', 'r') as f:
+        with open(self.INPUT_FULE, 'r') as f:
             commands = f.read().split('\n')
 
         files = build_files_dict(commands)
