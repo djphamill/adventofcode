@@ -1,4 +1,5 @@
 from day05 import *
+from day05_take_two import get_destination_of_first_range
 from parameterized import parameterized
 from pytest_check import check
 
@@ -92,6 +93,23 @@ def test_build_map():
         assert actual_source == expected_source
         assert actual_destination == expected_destination
         assert actual_map == expected_map
+    
+@parameterized.expand([
+    ('no_split', tuple([6, 2]), tuple([tuple([1, 2]), None])),
+    ('split_over_two', tuple([6, 6]), tuple([tuple([1, 2]), tuple([8, 4])])),
+    ('implicit dest only', tuple([92, 5]), tuple([tuple([92, 5]), None])),
+    ('split and implicit dest', tuple([8, 10]), tuple([tuple([8, 2]), tuple([10, 8])])),
+    ('implicit dest before ranges', tuple([0, 3]), tuple([tuple([0, 3]), None])),
+    ('implicit dest mid ranges', tuple([8, 2]), tuple([tuple([8, 2]), None])),
+])
+def test_get_destination_of_first_range(_, source_range, expected):
+    map = {
+        tuple([3, 5]): tuple([10, 12]),
+        tuple([6, 7]): tuple([1, 2]),
+        tuple([10, 12]): tuple([17, 19]),
+    }
+    actual = get_destination_of_first_range(source_range, map)
+    assert actual == expected
 
 EXAMPLE = ["seeds: 79 14 55 13",
            "",

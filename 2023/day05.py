@@ -45,13 +45,7 @@ def pt1(lines):
     return find_lowest_seed_location(lines, get_seeds)
 
 def find_lowest_seed_location(lines: List[str], seed_getter: Callable) -> int:
-    map_lines = get_map_lines(lines)
-    maps = []
-    if [] in map_lines:
-        print(f'empty string in {map_lines}')
-    for map_seciton_lines in map_lines:
-        source, destination, map = build_map(map_seciton_lines)
-        maps.append(map)
+    maps = build_maps(lines)
 
     seeds = seed_getter(lines)
     lowest_location = inf
@@ -63,6 +57,16 @@ def find_lowest_seed_location(lines: List[str], seed_getter: Callable) -> int:
         if destination < lowest_location:
             lowest_location = destination
     return lowest_location
+
+def build_maps(lines) -> List[Dict[tuple, tuple]]:
+    map_lines = get_map_lines(lines)
+    maps = []
+    if [] in map_lines:
+        print(f'empty string in {map_lines}')
+    for map_seciton_lines in map_lines:
+        source, destination, map = build_map(map_seciton_lines)
+        maps.append(map)
+    return maps
 
 def get_seeds_with_ranges(lines: List[str]) -> Iterator[int]:
     number_line = lines[0].replace("seeds:", "").strip()
