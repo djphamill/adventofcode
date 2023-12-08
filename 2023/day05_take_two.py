@@ -3,13 +3,19 @@ import sys
 import time
 from typing import List, Dict, Tuple
 from day05 import build_maps
+from dataclasses import dataclass
+
+@dataclass
+class Range:
+    start: int
+    end: int
+
 
 def pt1(lines: List[str]) -> str:
     return
 
 def pt2(lines: List[str]) -> str:
     seeds_as_ranges = get_seeds_as_ranges(lines)
-    
     maps = build_maps(lines)
     
     
@@ -38,7 +44,9 @@ def get_destination_of_first_range(source_range: Tuple[int], map: Dict[tuple, tu
             continue
      
     return first_destination_range, remaining_source_range
-    
+
+def get_seed_to_soil_map(lines: List[str]):
+    return
 
 if __name__ == '__main__':
     file_path = sys.argv[1]

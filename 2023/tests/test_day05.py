@@ -1,8 +1,8 @@
 from day05 import *
-from day05_take_two import get_destination_of_first_range
+from day05_take_two import get_destination_of_first_range, get_seed_to_soil_map, Range
 from parameterized import parameterized
 from pytest_check import check
-
+from copy import copy
 
 
 def test_example_pt1():
@@ -110,6 +110,25 @@ def test_get_destination_of_first_range(_, source_range, expected):
     }
     actual = get_destination_of_first_range(source_range, map)
     assert actual == expected
+    
+
+def test_seed_to_soil_mapping():
+    lines = ["seeds: 79 14 55 13",
+           "",
+           "seed-to-soil map:",
+           "50 98 2",
+           "",
+           "soil-to-fertilizer map:",
+           "37 52 2",
+           "",
+           "fertilizer-to-location map:",
+           "60 56 37"]
+    expected = {
+        Range(1, 97): Range(1, 51) Range(51, 52) Range(53, 97)  
+    }
+    actual = get_seed_to_soil_map(lines)
+    with check:
+        assert actual
 
 EXAMPLE = ["seeds: 79 14 55 13",
            "",
