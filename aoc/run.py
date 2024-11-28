@@ -1,3 +1,6 @@
+"""
+aoc command start
+"""
 from argparse import ArgumentParser
 from datetime import datetime
 

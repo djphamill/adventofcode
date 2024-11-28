@@ -1,3 +1,6 @@
+"""
+Make the files required for a given days/years solution
+"""
 import chevron
 from datetime import datetime
 
