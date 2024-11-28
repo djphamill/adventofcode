@@ -9,9 +9,13 @@ this_year = datetime.now().strftime('%Y')
 def make(args):
     day, year = args.day, args.year
 
-    with open('/Users/david/adventofcode/aoc/commands/solution.py.mustache', 'r') as f:
+    with open('/Users/david/adventofcode/aoc/templates/solution.mustache', 'r') as f:
         solution_code = chevron.render(f, {'day': day, 'year': year})
 
+    with open('/Users/david/adventofcode/aoc/templates/test.mustache', 'r') as f:
+        test_code = chevron.render(f, {'day': day, 'year': year})
+
     print(f'solution.py:\n{solution_code}')
+    print(f'test.py:\n{test_code}')
     # with open(f'/Users/david/adventofcode/{year}/day_{day}/solution.py', 'w') as f:
     #     f.write(solution_code)
