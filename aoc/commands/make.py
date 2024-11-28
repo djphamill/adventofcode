@@ -3,11 +3,12 @@ from datetime import datetime
 
 this_year = datetime.now().strftime('%Y')
 
-def make(day, year=this_year): # TODO: do this better
+def make(args):
+    day, year = args.day, args.year
+
     with open('/Users/david/adventofcode/aoc/commands/solution.py.mustache', 'r') as f:
-        solution = chevron.render(f, {'mustache': 'World'})
+        solution_code = chevron.render(f, {'day': day, 'year': year})
 
-    print(f'solution.py: {solution}')
-
+    print(f'solution.py:\n{solution_code}')
     # with open(f'/Users/david/adventofcode/{year}/day_{day}/solution.py', 'w') as f:
-    #     f.write(solution)
+    #     f.write(solution_code)
