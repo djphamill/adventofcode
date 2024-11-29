@@ -4,8 +4,6 @@ Make the files required for a given days/years solution
 import chevron
 from datetime import datetime
 
-this_year = datetime.now().strftime('%Y')
-
 def make(args):
     day, year = args.day, args.year
 
