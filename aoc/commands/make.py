@@ -2,7 +2,8 @@
 Make the files required for a given days/years solution
 """
 import chevron
-from datetime import datetime
+
+from aoc.commands.utils.constants import project_path
 
 def make(args):
     day, year = args.day, args.year
@@ -13,7 +14,7 @@ def make(args):
     with open('/Users/david/adventofcode/aoc/templates/test.mustache', 'r') as f:
         test_code = chevron.render(f, {'day': day, 'year': year})
 
-    print(f'solution.py:\n{solution_code}')
-    print(f'test.py:\n{test_code}')
+    print(f'{project_path}/{year}/solution.py:\n{solution_code}')
+    print(f'{project_path}/{year}/tests/day_{day}_test.py:\n{test_code}')
     # with open(f'/Users/david/adventofcode/{year}/day_{day}/solution.py', 'w') as f:
     #     f.write(solution_code)

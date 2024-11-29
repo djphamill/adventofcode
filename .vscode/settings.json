@@ -1,10 +1,6 @@
 {
     "json.schemas": [],
-    "python.defaultInterpreterPath": "src/web-app/venv/bin/python3.12",
     "vim.smartRelativeLine": true,
-    "python.testing.pytestArgs": [
-        "src"
-    ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
 }
