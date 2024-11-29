@@ -3,11 +3,15 @@ aoc command start
 """
 from argparse import ArgumentParser
 from datetime import datetime
+import os
 
 from commands.make import make
 from commands.solve import solve
 
 this_year = datetime.now().strftime('%Y')
+
+aoc_path, _ = os.path.split(__file__)
+project_path, _ = os.path.split(aoc_path)
 
 class Year(int):
 
