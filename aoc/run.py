@@ -3,7 +3,6 @@ aoc command start
 """
 from argparse import ArgumentParser
 from datetime import datetime
-import os
 
 from aoc.commands.make import make
 from aoc.commands.solve import solve
