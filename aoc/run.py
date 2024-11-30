@@ -6,20 +6,18 @@ from datetime import datetime
 
 from aoc.commands.make import make
 from aoc.commands.solve import solve
+from aoc.commands.utils.day import Day
+from aoc.commands.utils.year import Year
 
 this_year = datetime.now().strftime('%Y')
 
-class Year(int):
-
-    def __str__(self):
-        txt = super(int, self).__str__()
-        return txt.zfill(4)
-
-class Day(int):
-
-    def __str__(self):
-        txt = super(int, self).__str__()
-        return txt.zfill(2)
+def set_up_argument_parser() -> ArgumentParser:
+    args_parser = ArgumentParser(prog="aoc",
+                                 description="A program to automate the create of files for adventofcode")
+    subparser = args_parser.add_subparsers()
+    add_make_command(subparser)
+    add_solve_command(subparser)
+    return args_parser
 
 def add_make_command(subparser: ArgumentParser) -> None:
     make_parser = subparser.add_parser("make", help="Make the files associated with a day's AOC")
@@ -41,10 +39,6 @@ def add_solve_command(subparser: ArgumentParser) -> None:
     solve_parser.set_defaults(func=solve)
 
 if __name__ == "__main__":
-    args_parser = ArgumentParser(prog="aoc",
-                                 description="A program to automate the create of files for adventofcode")
-    subparser = args_parser.add_subparsers()
-    add_make_command(subparser)
-    add_solve_command(subparser)
+    args_parser = set_up_argument_parser()
     args = args_parser.parse_args()
     args.func(args)

@@ -3,4 +3,8 @@
     "vim.smartRelativeLine": true,
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
+
+    "files.exclude": {
+        "**/__*": true
+    }
 }
