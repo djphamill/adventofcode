@@ -4,17 +4,22 @@ Scenarios for day {day}
 
 from common.scenario import Scenario
 
-part_01_scenarios = [
-    Scenario(input="""1721
-                    979
-                    366
-                    299
-                    675
-                    1456""",
-             output="514579"),
-]
+input = """1721
+979
+366
+299
+675
+1456"""
+output = "514579"
+scenario = Scenario(input=input, output=output) 
+part_01_scenarios = [scenario]
 
-part_02_scenarios = [
-    Scenario(input="",
-             output=""),
-]
+input = """1721
+979
+366
+299
+675
+1456"""
+output = "241861950"
+scenario = Scenario(input=input, output=output) 
+part_02_scenarios = [scenario]

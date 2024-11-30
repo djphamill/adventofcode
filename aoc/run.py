@@ -8,6 +8,7 @@ from aoc.commands.make import make
 from aoc.commands.solve import solve
 from aoc.commands.utils.day import Day
 from aoc.commands.utils.year import Year
+from aoc.commands.utils.part import Part
 
 this_year = datetime.now().strftime('%Y')
 
@@ -30,10 +31,10 @@ def add_make_command(subparser: ArgumentParser) -> None:
 
 def add_solve_command(subparser: ArgumentParser) -> None:
     solve_parser = subparser.add_parser("solve", help="Solve the given day's problem given the input")
-    
-    solve_parser.add_argument("input")
 
     solve_parser.add_argument("day", type=Day)
+
+    solve_parser.add_argument("part", type=Part)
     
     solve_parser.add_argument("-y", "--year", type=Year, default=this_year)
     solve_parser.set_defaults(func=solve)
