@@ -4,7 +4,7 @@ Solution to day 02
 from typing import List
 
 def solution_part_01(input: str) -> str:
-    lines = [line.strip().split(" ") for line in input.split('\n') if line]O
+    lines = [line.strip().split(" ") for line in input.split('\n') if line]
     
     reports = []
     for line in lines:
