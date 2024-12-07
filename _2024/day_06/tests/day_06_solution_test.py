@@ -2,7 +2,6 @@
 Tests for day 06's solution
 """
 from parameterized import parameterized
-import pytest
 
 from common.scenario import Scenario
 
@@ -16,7 +15,6 @@ def test_solution_part_01(scenario: Scenario) -> str:
     assert actual == expected
 
 @parameterized.expand(part_02_scenarios)
-@pytest.mark.xfail
 def test_solution_part_02(scenario: Scenario) -> str:
     expected = scenario.output
     actual = solution_part_02(scenario.input)

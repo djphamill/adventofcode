@@ -78,4 +78,61 @@ def is_next_step_blocked(map: List[str], guard_position: Position) -> bool:
     return character_at_next_step == "#"
 
 def solution_part_02(input: str) -> str:
-    pass
+    map = [line.strip() for line in input.split('\n') if line]
+    
+    guards_position = find_guard(map)
+    guards_path: List[Position] = []
+
+    while guards_position.is_coordinate_on_map(map):
+        guards_path.append(guards_position)
+        guards_position = move_guard(map, guards_position)
+    
+    places_for_blocks_that_create_loops = find_loop_making_blocks(guards_path, map)
+    return str(len(places_for_blocks_that_create_loops))
+
+@dataclass
+class Coordinate:
+    right: int
+    down: int
+
+def find_loop_making_blocks(path: List[Position], map: List[str]) -> List[Coordinate]:
+    coordiantes_of_loop_making_blocks: List[Coordinate] = []
+    for number_of_steps_taken, position in enumerate(path):
+        path_to_check = path[:number_of_steps_taken]
+        if path_contains_trail_to_right(position, path_to_check, map):
+            coordinate_of_loop_making_block = calculate_position_of_loop_making_block(position)
+            coordiantes_of_loop_making_blocks.append(coordinate_of_loop_making_block)
+    return coordiantes_of_loop_making_blocks
+    
+def path_contains_trail_to_right(position: Position, path: List[Position], map: List[str]) -> bool:
+    positions_to_find = get_positions_to_find(position, map)
+    for position_to_find in positions_to_find:
+        for path_point in path:
+            if path_point == position_to_find:
+                return True
+
+    return False
+    
+def get_positions_to_find(position: Position, map: List[str]) -> List[Position]:
+    height_of_map = len(map)
+    width_of_map = len(map[0])
+    
+    positions: List[Position]= []
+    if position.direction == Direction.UP.value:
+        for right in range(position.right + 1, width_of_map):
+           positions.append(Position(right, position.down, Direction.RIGHT.value))
+    elif position.direction == Direction.RIGHT.value:
+        for down in range(position.down + 1, height_of_map):
+           positions.append(Position(position.right, down, Direction.DOWN.value))
+    elif position.direction == Direction.DOWN.value:
+        for right in range(position.right):
+           positions.append(Position(right, position.down, Direction.LEFT.value))
+    else:
+        for down in range(position.down):
+            positions.append(Position(position.right, down, Direction.UP.value))
+    return positions
+
+
+def calculate_position_of_loop_making_block(position: Position) -> Coordinate:
+    one_step_forward = position.step_forward()
+    return Coordinate(one_step_forward.right, one_step_forward.down)
